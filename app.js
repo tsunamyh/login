@@ -5,7 +5,7 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const app = express()
-
+const auth = require('./routes/auth')
 app.set('view engine', "ejs")
 app.set('views', path.join(__dirname, 'views'))
 
@@ -24,3 +24,4 @@ app.use(session(sess))
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use('/',auth)
